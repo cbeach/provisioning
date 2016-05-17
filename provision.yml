@@ -1,0 +1,69 @@
+# This playbook is meant to provision a new computer.
+# Run with: ansible-playbook -i , provision.yml
+
+---
+- name: Provision a machine.
+  hosts: 127.0.0.1
+  connection: local
+  tasks:
+
+  - name: Add Virtualbox server.
+    apt_repository: repo='deb http://download.virtualbox.org/virtualbox/debian {{ hostvars[inventory_hostname]["ansible_distribution_release"] }} contrib' state=present
+    register: ppa
+    sudo: yes
+
+  - name: Add repository keys.
+    apt_key: keyserver=keyserver.ubuntu.com id={{ item }}
+    register: ppa
+    sudo: yes
+    with_items:
+      - 54422A4B98AB5139  # Virtualbox
+
+  - name: Add PPAs.
+    apt_repository: repo='{{ item }}'
+    sudo: yes
+    register: ppa
+    with_items:
+      - ppa:webupd8team/java
+      - ppa:fish-shell/release-2
+      - ppa:tmate.io/archive
+
+  - name: Update the apt cache.
+    apt: update_cache=yes
+    sudo: yes
+    when: ppa.changed
+
+  - name: Install Mac packages.
+    apt: name={{ item }}
+    sudo: yes
+    with_items:
+     - macfanctld
+    when: '"Apple" in hostvars[inventory_hostname]["ansible_system_vendor"]'
+
+  - name: Install packages.
+    apt: name={{ item }}
+    sudo: yes
+    with_items:
+     - adobe-flashplugin
+     - build-essential
+
+
+  - name: Install list of packages
+    apt: name={{item}} state=installed
+    with_items:
+         - package1
+         - vim-common
+         - vim-gtk
+         - vim-gui-common
+         - vim-runtime
+         - vim-tiny
+         - libopencv-dev
+         - python-opencv
+         - opencv-data
+
+  - name: Install python packages
+    pip: name={{item}}
+    with_items:
+        - virtualenv
+        - virtualenvwrapper
+    
