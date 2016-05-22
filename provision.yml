@@ -40,34 +40,54 @@
      - macfanctld
     when: '"Apple" in hostvars[inventory_hostname]["ansible_system_vendor"]'
 
-  - name: Install packages.
+  - name: Install system packages.
+    apt: name={{ item }}
+    sudo: yes
+    with_items:
+      - openssh-server
+      - stow
+
+  - name: Install desktop environment.
+    apt: name={{ item }}
+    sudo: yes
+    with_items:
+      - gnome
+
+  - name: Install misc packages.
     apt: name={{ item }}
     sudo: yes
     with_items:
       - adobe-flashplugin
-      - libopencv-dev
-      - opencv-data
-      - python-opencv
+
+  - name: Install development tools.
+    apt: name={{ item }}
+    sudo: yes
+    with_items:
       - vim-common
       - vim-gtk
       - vim-gui-common
       - vim-runtime
       - vim-tiny
+      - build-essential
+      - libopencv-dev
+      - opencv-data
+      - python-opencv
       - virtualenv
       - virtualenvwrapper
-
+      - autoconf
+      - sbt
+      - screen
+      - sloccount
 
   - name: Install programming languages.
     apt: name={{ item }}
     sudo: yes
     with_items:
-      - build-essential
       - afnix
       - algol68g
       - aplus-fsf
       - asymptote
       - ats2-lang
-      - bash
       - bc
       - bf
       - bsdgames
