@@ -34,3 +34,6 @@
 [submodule "ansible"]
 	path = ansible
 	url = git://github.com/ansible/ansible.git
+[submodule "dotfiles/.vim/bundle/vim-markdown"]
+	path = dotfiles/.vim/bundle/vim-markdown
+	url = https://github.com/plasticboy/vim-markdown.git
