@@ -54,10 +54,13 @@ color_echo() {
         white)
             echo -e "\033[1;37m${text}\033[0m"
             ;;
+        *)
+            echo -e "\033[0;31m${color} is not a valid color\033[0m"
+            ;;
     esac
 }
 
-color_echo yello "Bootstrapping your system..."
+color_echo yellow "Bootstrapping your system..."
 color_echo green "Updating apt-get..."
 apt-get update -y
 color_echo green "Upgrading system..."
