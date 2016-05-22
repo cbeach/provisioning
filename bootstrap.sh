@@ -1,8 +1,8 @@
 #!/bin/bash 
 
-apt-get update
-apt-get upgrade
-apt-get install git-core
+apt-get update -y
+apt-get upgrade -y
+apt-get install -y git-core
 
 mkdir dev
 cd dev
