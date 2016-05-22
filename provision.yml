@@ -44,26 +44,113 @@
     apt: name={{ item }}
     sudo: yes
     with_items:
-     - adobe-flashplugin
-     - build-essential
+      - adobe-flashplugin
+      - libopencv-dev
+      - opencv-data
+      - python-opencv
+      - vim-common
+      - vim-gtk
+      - vim-gui-common
+      - vim-runtime
+      - vim-tiny
+      - virtualenv
+      - virtualenvwrapper
 
 
-  - name: Install list of packages
-    apt: name={{item}} state=installed
+  - name: Install programming languages.
+    apt: name={{ item }}
+    sudo: yes
     with_items:
-         - package1
-         - vim-common
-         - vim-gtk
-         - vim-gui-common
-         - vim-runtime
-         - vim-tiny
-         - libopencv-dev
-         - python-opencv
-         - opencv-data
-
-  - name: Install python packages
-    pip: name={{item}}
-    with_items:
-        - virtualenv
-        - virtualenvwrapper
-    
+      - build-essential
+      - afnix
+      - algol68g
+      - aplus-fsf
+      - asymptote
+      - ats2-lang
+      - bash
+      - bc
+      - bf
+      - bsdgames
+      - cduce
+      - clisp
+      - clojure1.6
+      - cmake
+      - coffeescript
+      - dc
+      - ecere-dev
+      - elixir
+      - emacs24
+      - erlang
+      - f2c
+      - fp-compiler
+      - fsharp
+      - g++
+      - gambas3-script
+      - gap
+      - gauche
+      - gawk
+      - gcc
+      - gdc
+      - genius
+      - gforth
+      - gfortran
+      - ghc
+      - ghostscript
+      - gnat
+      - gnu-smalltalk
+      - gnuplot
+      - gobjc
+      - golang
+      - gpt
+      - gri
+      - groff
+      - groovy
+      - haxe
+      - icont
+      - iconx
+      - intercal
+      - iverilog
+      - jasmin-sable
+      - jq
+      - julia
+      - libgd-dev
+      - libpng12-dev
+      - lisaac
+      - llvm
+      - lua5.3
+      - make
+      - maxima
+      - minizinc
+      - mlton
+      - mono-devel
+      - mono-mcs
+      - mono-vbnc
+      - nasm
+      - neko
+      - nickle
+      - nim
+      - ocaml
+      - octave
+      - open-cobol
+      - openjdk-8-jdk
+      - pari-gp
+      - parrot
+      - perl
+      - php-cli
+      - pike8.0
+      - python
+      - r-base
+      - ratfor
+      - regina-rexx
+      - rhino
+      - ruby
+      - scala
+      - scilab
+      - slsh
+      - swi-prolog
+      - tcl
+      - ucblogo
+      - valac
+      - xsltproc
+      - yorick
+      - zoem
