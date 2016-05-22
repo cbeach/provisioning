@@ -1,5 +1,4 @@
 #!/bin/bash 
-# run this script with the command 
 
 apt-get update
 apt-get upgrade
