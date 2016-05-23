@@ -57,7 +57,7 @@
     apt: name={{ item }}
     sudo: yes
     with_items:
-      - adobe-flashplugin
+      - flashplugin-installer
 
   - name: Install development tools.
     apt: name={{ item }}
