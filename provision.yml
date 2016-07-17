@@ -19,10 +19,14 @@
     with_items:
       - 54422A4B98AB5139  # Virtualbox
 
+  - name: Add SBT ppa's
+    apt_repository: repo='deb https://dl.bintray.com/sbt/debian /'
+
   - name: Add PPAs.
     apt_repository: repo='{{ item }}'
     sudo: yes
     register: ppa
+    update_cache: yes
     with_items:
       - ppa:webupd8team/java
       - ppa:fish-shell/release-2
@@ -37,7 +41,7 @@
     apt: name={{ item }}
     sudo: yes
     with_items:
-     - macfanctld
+      - macfanctld
     when: '"Apple" in hostvars[inventory_hostname]["ansible_system_vendor"]'
 
   - name: Install system packages.
@@ -58,6 +62,10 @@
     sudo: yes
     with_items:
       - flashplugin-installer
+      - libsdl1.2debian 
+      - libsdl-image1.2 
+      - libsdl-ttf2.0-0
+      - gnome-tweak-tool
 
   - name: Install development tools.
     apt: name={{ item }}

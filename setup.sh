@@ -86,6 +86,8 @@ pip install  \
     virtualenv \
     virtualenvwrapper
 
+source painfull_installs.sh
+
 color_echo green "Starting ansible run"
 cd ./ansible
 color_echo green "Setting up ansible environment"
