@@ -38,7 +38,7 @@
     with_items:
       - flashplugin-installer
       - bzip2
-      - libzip2
+      - libzip
 
   - name: Install graphics libraries
     apt: name={{ item }}
