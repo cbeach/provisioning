@@ -7,35 +7,9 @@
   connection: local
   tasks:
 
-  - name: Add Virtualbox server.
-    apt_repository: repo='deb http://download.virtualbox.org/virtualbox/debian {{ hostvars[inventory_hostname]["ansible_distribution_release"] }} contrib' state=present
-    register: ppa
-    sudo: yes
-
-  - name: Add repository keys.
-    apt_key: keyserver=keyserver.ubuntu.com id={{ item }}
-    register: ppa
-    sudo: yes
-    with_items:
-      - 54422A4B98AB5139  # Virtualbox
-
-  - name: Add SBT ppa's
-    apt_repository: repo='deb https://dl.bintray.com/sbt/debian /'
-
-  - name: Add PPAs.
-    apt_repository: repo='{{ item }}'
-    sudo: yes
-    register: ppa
-    update_cache: yes
-    with_items:
-      - ppa:webupd8team/java
-      - ppa:fish-shell/release-2
-      - ppa:tmate.io/archive
-
   - name: Update the apt cache.
     apt: update_cache=yes
     sudo: yes
-    when: ppa.changed
 
   - name: Install Mac packages.
     apt: name={{ item }}
