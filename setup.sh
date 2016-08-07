@@ -94,4 +94,6 @@ color_echo green "Setting up ansible environment"
 source ./hacking/env-setup
 
 bin/ansible-playbook -K -i , ../provision.yml
+cd ../
+rm ~/.bashrc
 stow -t ${HOME} dotfiles

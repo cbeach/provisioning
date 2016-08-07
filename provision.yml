@@ -5,7 +5,30 @@
 - name: Provision a machine.
   hosts: 127.0.0.1
   connection: local
+  vars:
+    - apt_file: /etc/apt/sources.list.d/google-chrome.list
   tasks:
+  - include: tasks/languages.yml
+
+  - name: Does the Google apt file exist?
+    command: test -f {{apt_file}}
+    register: google_apt_exists
+    ignore_errors: True
+
+  - name: Add Google Chrome key
+    shell: wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+    when: google_apt_exists.rc == 1
+
+  - name: Add Google Chrome repo
+    copy: content="deb http://dl.google.com/linux/chrome/deb/ stable main" dest={{apt_file}} owner=root group=root mode=644
+    when: google_apt_exists.rc == 1
+
+  - name: Update apt cache
+    apt: update_cache=yes
+    when: google_apt_exists.rc == 1
+
+  - name: Install Google Chrome
+    apt: pkg=google-chrome-stable state=installed
 
   - name: Update the apt cache.
     apt: update_cache=yes
@@ -38,7 +61,7 @@
     with_items:
       - flashplugin-installer
       - bzip2
-      - libzip2
+      - libzip-dev
 
   - name: Install graphics libraries
     apt: name={{ item }}
@@ -48,6 +71,14 @@
       - libsdl-image1.2 
       - libsdl-ttf2.0-0
       - freeglut3-dev
+
+  - name: Configure git
+    git_config: name={{ item.name }} value={{ item.value }} scope=global
+    become: yes
+    become_user: mcsmash
+    with_items:
+      - {name: user.email, value: "beachc@gmail.com"}
+      - {name: user.name, value: "Casey Beach"}
 
   - name: Install development tools.
     apt: name={{ item }}
@@ -69,98 +100,3 @@
       - screen
       - sloccount
 
-  - name: Install programming languages.
-    apt: name={{ item }}
-    sudo: yes
-    with_items:
-      - afnix
-      - algol68g
-      - aplus-fsf
-      - asymptote
-      - ats2-lang
-      - bc
-      - bf
-      - bsdgames
-      - cduce
-      - clisp
-      - clojure1.6
-      - cmake
-      - coffeescript
-      - dc
-      - ecere-dev
-      - elixir
-      - emacs24
-      - erlang
-      - f2c
-      - fp-compiler
-      - fsharp
-      - g++
-      - gambas3-script
-      - gap
-      - gauche
-      - gawk
-      - gcc
-      - gdc
-      - genius
-      - gforth
-      - gfortran
-      - ghc
-      - ghostscript
-      - gnat
-      - gnu-smalltalk
-      - gnuplot
-      - gobjc
-      - golang
-      - gpt
-      - gri
-      - groff
-      - groovy
-      - haxe
-      - icont
-      - iconx
-      - intercal
-      - iverilog
-      - jasmin-sable
-      - jq
-      - julia
-      - libgd-dev
-      - libpng12-dev
-      - lisaac
-      - llvm
-      - lua5.3
-      - make
-      - maxima
-      - minizinc
-      - mlton
-      - mono-devel
-      - mono-mcs
-      - mono-vbnc
-      - nasm
-      - neko
-      - nickle
-      - nim
-      - ocaml
-      - octave
-      - open-cobol
-      - openjdk-8-jdk
-      - pari-gp
-      - parrot
-      - perl
-      - php-cli
-      - pike8.0
-      - python
-      - r-base
-      - ratfor
-      - regina-rexx
-      - rhino
-      - ruby
-      - scala
-      - scilab
-      - slsh
-      - swi-prolog
-      - tcl
-      - ucblogo
-      - valac
-      - xsltproc
-      - yorick
-      - zoem
