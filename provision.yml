@@ -34,13 +34,6 @@
     apt: update_cache=yes
     sudo: yes
 
-  - name: Install Mac packages.
-    apt: name={{ item }}
-    sudo: yes
-    with_items:
-      - macfanctld
-    when: '"Apple" in hostvars[inventory_hostname]["ansible_system_vendor"]'
-
   - name: Install system packages.
     apt: name={{ item }}
     sudo: yes
