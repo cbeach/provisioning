@@ -40,6 +40,7 @@
     with_items:
       - openssh-server
       - stow
+      - htop
 
   - name: Install desktop environment.
     apt: name={{ item }}
