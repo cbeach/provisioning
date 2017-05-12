@@ -95,5 +95,5 @@ source ./hacking/env-setup
 
 bin/ansible-playbook -K -i , ../provision.yml
 cd ../
-rm ~/.bashrc
+rm ${HOME}/.bashrc
 stow -t ${HOME} dotfiles

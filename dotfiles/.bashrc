@@ -1,35 +1,21 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
-set guifont=Ubuntu\ Mono\ for\ Powerline\ 12
+#set guifont=Ubuntu\ Mono\ for\ Powerline\ 12
 
 #alias mc='java -Xmx1024M -Xms512M -cp $HOME/bin/minecraft.jar net.minecraft.LauncherFrame'
-alias mc='$HOME/bin/games/MultiMC/MultiMC'
-alias mcs='java -Xmx1024M -Xms1024M -jar minecraft_server.jar nogui'
-alias tl='java -jar $HOME/bin/TechnicLauncher.jar'
 alias nautilus='nautilus --no-desktop'
 
 export PATH=/opt/couchbase/bin:$PATH
-export PATH=$HOME/bin/:$PATH
-export PATH=$HOME/bin/dev-tools/eclipse:$PATH
-export PATH=$HOME/bin/dev-tools/node/:$PATH
-export PATH=$HOME/bin/dev-tools/eagle/bin/:$PATH
-export PATH=$HOME/bin/dev-tools/headlessJS/phantomjs/bin/:$PATH
-export PATH=$HOME/bin/dev-tools/headlessJS/slimerjs/:$PATH
-export PATH=$HOME/bin/dev-tools/headlessJS/casperjs/bin/:$PATH
-export PATH=$HOME/bin/dev-tools/Logic/:$PATH
-export PATH=$HOME/bin/dev-tools/adt-bundle/sdk/platform-tools:$PATH
-export PATH=$HOME/bin/dev-tools/adt-bundle/sdk/tools:$PATH
-export PATH=$HOME/bin/dev-tools/cordova/bin:$PATH
-export PATH=$HOME/bin/dev-tools/spark-1.3.1/bin:$PATH
-export PATH=$HOME/bin/dev-tools/activator/:$PATH
-export PATH=$HOME/bin/dev-tools/android-studio/bin/:$PATH
+export PATH=$HOME/bin/dev-tools/analyzer/:$PATH
 export PATH=$HOME/bin/dev-tools/intelliJ/bin/:$PATH
 export PATH=$HOME/bin/dev-tools/pycharm/bin/:$PATH
 export PATH=$HOME/bin/dev-tools/clion/bin/:$PATH
-export PATH=$HOME/bin/dev-tools/jetty/:$PATH
-export PATH=$HOME/bin/dev-tools/jetty/bin/:$PATH
 export PATH=$HOME/bin/dev-tools/scala_sloc:$PATH
+export PATH=$HOME/bin/dev-tools/idea/bin:$PATH
+export PATH=$HOME/bin/dev-tools/EAPidea/bin:$PATH
+export PATH=$HOME/bin/dev-tools/pycharm/bin:$PATH
+export PATH=$HOME/.vimpkg/bin:$PATH
 
 export PATH=$HOME/bin/games/MultiMC:$PATH
 export PATH=$HOME/bin/games/FTL:$PATH
@@ -44,11 +30,11 @@ export IDEA_JDK='/usr/lib/jvm/java-8-oracle/jre/bin/java'
 #export JAVA_HOME='/usr/lib/jvm/java-6-openjdk-amd64/'
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/dev/java_libraries/static_libraries/
 
-#export WORKON_HOME=$HOME/Envs
-#export PIP_REQUIRE_VIRTUALENV=true
-#export PIP_RESPECT_VIRTUALENV=true
-#export PIP_VIRTUALENV_BASE=$WORKON_HOME
-#source /usr/local/bin/virtualenvwrapper.sh
+export WORKON_HOME=$HOME/Envs
+export PIP_REQUIRE_VIRTUALENV=true
+export PIP_RESPECT_VIRTUALENV=true
+export PIP_VIRTUALENV_BASE=$WORKON_HOME
+source /usr/local/bin/virtualenvwrapper.sh
 #source $HOME/bin/dev-tools/nvm/nvm.sh
 
 alias pdipip='/home/beachc/Envs/pdi/bin/pip'
@@ -56,12 +42,12 @@ alias notpdipip='/home/beachc/Envs/notpdi/bin/pip'
 
 # TODO: Patch fonts and get powerline-bash/vim working properly
 # Powerline bash plugin -------------------------------------------------------
-export $TERM=xterm-256color
-function _update_ps1()
-{
-   export PS1="$(~/.bash/PowerLineShell/powerline-shell.py $?)"
-}
-export PROMPT_COMMAND="_update_ps1"
+#export $TERM=xterm-256color
+#function _update_ps1()
+#{
+#   export PS1="$(~/.bash/PowerLineShell/powerline-shell.py $?)"
+#}
+#export PROMPT_COMMAND="_update_ps1"
 
 # This was all here when I made this ------------------------------------------ 
 
@@ -159,3 +145,7 @@ fi
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

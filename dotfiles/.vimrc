@@ -8,11 +8,11 @@ set vb t_vb=                        "Visual bell can die in a fire
 "Text format
 set nowrap
 set autoindent                      
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set smarttab
 set expandtab
-set softtabstop=4
+set softtabstop=2
 
 set history=1000
 set nocompatible                   " Fully Improved
@@ -92,6 +92,23 @@ map <F4> :TlistToggle<CR>
 map <F8> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 map <C-d> <Leader>pw 
 nnoremap K i<CR><ESC>
+
+"NerdTree
+silent! nmap <C-p> :NERDTreeToggle<CR>
+silent! map <F2> :NERDTreeToggle<CR>
+silent! map <F3> :NERDTreeFind<CR>
+let g:NERDTreeToggle="<F2>"
+let g:NERDTreeMapActivateNode="<F3>"
+let g:NERDTreeMapPreview="<F4>"
+
+"CtrlP
+set wildignore+=*/target/*
+
+"RainbowParens
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
 
 "Functions for making unicode character combinations.
 command! -range -nargs=0 Overline        call s:CombineSelection(<line1>, <line2>, '0305')
@@ -225,3 +242,4 @@ function! NyanMe() " {{{
     endfunction " }}}
 
     command! NyanMe call NyanMe()
+execute pathogen#infect()
