@@ -12,4 +12,4 @@ source ./hacking/env-setup
 
 color_echo green "Running ansible playbook"
 
-bin/ansible-playbook -K -i , ../provision.yml
+bin/ansible-playbook -vvvv -K -i , ../provision.yml
