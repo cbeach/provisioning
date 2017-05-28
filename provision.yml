@@ -96,6 +96,7 @@
       - build-essential
       - capnproto
       - cmake
+      - exuberant-ctags
       - kcachegrind
       - libao-dev
       - libarchive-dev 
