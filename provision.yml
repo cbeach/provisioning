@@ -83,7 +83,7 @@
 
   - name: update npm
     npm:
-      name: {{ item }}
+      name: "{{ item }}"
       global: True
     with_items:
       - npm
@@ -104,6 +104,7 @@
       - libopencv-dev
       - libqt5opengl5-dev
       - libsdl2-dev 
+      - libtool
       - libzip-dev
       - opencv-data
       - python-opencv
