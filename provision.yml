@@ -57,6 +57,9 @@
     sudo: yes
     with_items:
       - flashplugin-installer
+      - texlive
+      - texlive-latex-extra
+      - okular
 
   - name: Install graphics libraries
     apt: name={{ item }}
