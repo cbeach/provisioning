@@ -6,16 +6,18 @@
 #alias mc='java -Xmx1024M -Xms512M -cp $HOME/bin/minecraft.jar net.minecraft.LauncherFrame'
 alias nautilus='nautilus --no-desktop'
 
+source $HOME/.bash/include/*
+
 export PATH=/opt/couchbase/bin:$PATH
 export PATH=$HOME/bin/dev-tools/analyzer/:$PATH
 export PATH=$HOME/bin/dev-tools/clion/bin/:$PATH
 export PATH=$HOME/bin/dev-tools/EAPidea/bin:$PATH
 export PATH=$HOME/bin/dev-tools/idea/bin:$PATH
 export PATH=$HOME/bin/dev-tools/intelliJ/bin/:$PATH
-export PATH=$HOME/bin/dev-tools/protoc/bin:$PATH
 export PATH=$HOME/bin/dev-tools/pycharm/bin:$PATH
 export PATH=$HOME/bin/dev-tools/pycharm/bin/:$PATH
 export PATH=$HOME/bin/dev-tools/scala_sloc:$PATH
+export PATH=$HOME/bin/dev-tools/bin:$PATH
 export PATH=$HOME/.vimpkg/bin:$PATH
 
 export PATH=$HOME/bin/games/MultiMC:$PATH
