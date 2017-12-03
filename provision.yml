@@ -109,6 +109,7 @@
         - libboost-dev
         - libgtk-3-dev 
         - libopencv-dev
+        - libboost-all-dev
         - libqt5opengl5-dev
         - libsdl2-dev 
         - libtool
