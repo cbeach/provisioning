@@ -7,3 +7,6 @@ then
     apt-get -y update
     apt-get install -y --allow-unauthenticated sbt
 fi
+
+cd fonts
+./install.sh

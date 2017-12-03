@@ -40,3 +40,6 @@
 [submodule "roles"]
 	path = roles
 	url = git@github.com:cbeach/ansible-roles.git
+[submodule "fonts"]
+	path = fonts
+	url = https://github.com/powerline/fonts.git
