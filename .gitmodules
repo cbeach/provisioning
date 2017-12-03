@@ -37,3 +37,6 @@
 [submodule "dotfiles/.vim/bundle/vim-markdown"]
 	path = dotfiles/.vim/bundle/vim-markdown
 	url = https://github.com/plasticboy/vim-markdown.git
+[submodule "roles"]
+	path = roles
+	url = git@github.com:cbeach/ansible-roles.git
