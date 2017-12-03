@@ -53,7 +53,7 @@ color_echo() {
             echo -e "\033[1;37m${text}\033[0m"
             ;;
         *)
-            echo -e "${text}"
+            echo -e "\033[0;31m${color} is not a valid color\033[0m"
             ;;
     esac
 }

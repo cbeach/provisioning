@@ -5,124 +5,127 @@
 - name: Provision a machine.
   hosts: 127.0.0.1
   connection: local
+  become: True
   vars:
     - apt_file: /etc/apt/sources.list.d/google-chrome.list
-  tasks:
-  - include: tasks/languages.yml
-
-  - name: Does the Google apt file exist?
-    command: test -f {{apt_file}}
-    register: google_apt_exists
-    ignore_errors: True
-
-  - name: Add Google Chrome key
-    shell: wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
-    when: google_apt_exists.rc == 1
-
-  - name: Add Google Chrome repo
-    copy: content="deb http://dl.google.com/linux/chrome/deb/ stable main" dest={{apt_file}} owner=root group=root mode=644
-    when: google_apt_exists.rc == 1
-
-  - name: Update apt cache
-    apt: update_cache=yes
-    when: google_apt_exists.rc == 1
-
-  - name: Install Google Chrome
-    apt: pkg=google-chrome-stable state=installed
-
-  - name: Update the apt cache.
-    apt: update_cache=yes
-    sudo: yes
-
-  - name: Install system tools.
-    apt: name={{ item }}
-    sudo: yes
-    with_items:
-      - bzip2
-      - htop
-      - iotop
-      - keepass2
-      - openssh-server
-      - stow
-
-  - name: Install desktop environment.
-    apt: name={{ item }}
-    sudo: yes
-    with_items:
-      - gnome
-      - gnome-tweak-tool
-
-  - name: Install misc packages.
-    apt: name={{ item }}
-    sudo: yes
-    with_items:
-      - flashplugin-installer
-      - texlive
-      - texlive-latex-extra
-      - okular
-
-  - name: Install graphics libraries
-    apt: name={{ item }}
-    sudo: yes
-    with_items:
-      - libsdl-image1.2:i386
-      - libsdl1.2debian 
-      - libsdl-image1.2 
-      - libsdl-ttf2.0-0
-      - libsdl2-2.0-0
-      - freeglut3-dev
-      - libgtk2.0-0:i386
-
-  - name: Configure git
-    git_config: name={{ item.name }} value={{ item.value }} scope=global
-    become: yes
-    become_user: mcsmash
-    with_items:
-      - {name: user.email, value: "beachc@gmail.com"}
-      - {name: user.name, value: "Casey Beach"}
-
-  - name: install node.js
-    apt: name=nodejs
-
-  - name: update npm
-    npm:
-      name: "{{ item }}"
-      global: True
-    with_items:
-      - npm
-
-  - name: Install development tools and libraries.
-    apt: name={{ item }}
-    sudo: yes
-    with_items:
-      - autoconf
-      - build-essential
-      - capnproto
-      - cmake
-      - exuberant-ctags
-      - kcachegrind
-      - libao-dev
-      - libarchive-dev 
-      - libboost-dev
-      - libgtk-3-dev 
-      - libopencv-dev
-      - libqt5opengl5-dev
-      - libsdl2-dev 
-      - libtool
-      - libzip-dev
-      - opencv-data
-      - python-opencv
-      - qt5-default 
-      - qttools5-dev-tools 
-      - sbt
-      - screen
-      - sloccount
-      - valgrind
-      - vim-common
-      - vim-gtk
-      - vim-gui-common
-      - vim-runtime
-      - vim-tiny
-      - virtualenv
-      - virtualenvwrapper
-      - zlib1g-dev 
+  roles:
+    - role: apps/docker
+  pre_tasks:
+    - include: tasks/languages.yml
+  
+    - name: Does the Google apt file exist?
+      command: test -f {{apt_file}}
+      register: google_apt_exists
+      ignore_errors: True
+  
+    - name: Add Google Chrome key
+      shell: wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+      when: google_apt_exists.rc == 1
+  
+    - name: Add Google Chrome repo
+      copy: content="deb http://dl.google.com/linux/chrome/deb/ stable main" dest={{apt_file}} owner=root group=root mode=644
+      when: google_apt_exists.rc == 1
+  
+    - name: Update apt cache
+      apt: update_cache=yes
+      when: google_apt_exists.rc == 1
+  
+    - name: Install Google Chrome
+      apt: pkg=google-chrome-stable state=installed
+  
+    - name: Update the apt cache.
+      apt: update_cache=yes
+      sudo: yes
+  
+    - name: Install system tools.
+      apt: name={{ item }}
+      sudo: yes
+      with_items:
+        - bzip2
+        - htop
+        - iotop
+        - keepass2
+        - openssh-server
+        - stow
+  
+    - name: Install desktop environment.
+      apt: name={{ item }}
+      sudo: yes
+      with_items:
+        - gnome
+        - gnome-tweak-tool
+  
+    - name: Install misc packages.
+      apt: name={{ item }}
+      sudo: yes
+      with_items:
+        - flashplugin-installer
+        - texlive
+        - texlive-latex-extra
+        - okular
+  
+    - name: Install graphics libraries
+      apt: name={{ item }}
+      sudo: yes
+      with_items:
+        - libsdl-image1.2:i386
+        - libsdl1.2debian 
+        - libsdl-image1.2 
+        - libsdl-ttf2.0-0
+        - libsdl2-2.0-0
+        - freeglut3-dev
+        - libgtk2.0-0:i386
+  
+    - name: Configure git
+      git_config: name={{ item.name }} value={{ item.value }} scope=global
+      become: yes
+      become_user: mcsmash
+      with_items:
+        - {name: user.email, value: "beachc@gmail.com"}
+        - {name: user.name, value: "Casey Beach"}
+  
+    - name: install node.js
+      apt: name=nodejs
+  
+    - name: update npm
+      npm:
+        name: "{{ item }}"
+        global: True
+      with_items:
+        - npm
+  
+    - name: Install development tools and libraries.
+      apt: name={{ item }}
+      sudo: yes
+      with_items:
+        - autoconf
+        - build-essential
+        - capnproto
+        - cmake
+        - exuberant-ctags
+        - kcachegrind
+        - libao-dev
+        - libarchive-dev 
+        - libboost-dev
+        - libgtk-3-dev 
+        - libopencv-dev
+        - libqt5opengl5-dev
+        - libsdl2-dev 
+        - libtool
+        - libzip-dev
+        - opencv-data
+        - python-opencv
+        - qt5-default 
+        - qttools5-dev-tools 
+        - sbt
+        - screen
+        - sloccount
+        - valgrind
+        - vim-common
+        - vim-gtk
+        - vim-gui-common
+        - vim-runtime
+        - vim-tiny
+        - virtualenv
+        - virtualenvwrapper
+        - zlib1g-dev 
