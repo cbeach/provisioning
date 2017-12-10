@@ -66,7 +66,7 @@ apt-get -y upgrade
 color_echo green "Installing required system packages..."
 apt-get install -y \
     build-essential \
-    git-core \
+    git \
     python \
     python-pip \
     libffi-dev \
@@ -75,6 +75,7 @@ apt-get install -y \
 color_echo green "Installing required python packages..."
 pip install --upgrade pip
 pip install  \
+    stow \
     paramiko \
     PyYAML \
     Jinja2 \
@@ -93,7 +94,7 @@ cd ./ansible
 color_echo green "Setting up ansible environment"
 source ./hacking/env-setup
 
-bin/ansible-playbook -K -i , ../provision.yml
+bin/ansible-playbook -vvvv -K -i , ../provision.yml
 cd ../
 rm ${HOME}/.bashrc
 stow -t ${HOME} dotfiles
