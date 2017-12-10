@@ -4,6 +4,8 @@
 [submodule "dotfiles"]
 	path = dotfiles
 	url = git@github.com:cbeach/dotfiles.git
+	branch = master
 [submodule "roles"]
 	path = roles
 	url = git@github.com:cbeach/ansible-roles.git
+	branch = master
