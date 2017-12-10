@@ -1,39 +1,9 @@
-[submodule "dotfiles/.vim/bundle/MatchTag"]
-	path = dotfiles/.vim/bundle/MatchTag
-	url = https://github.com/gregsexton/MatchTag.git
-[submodule "dotfiles/.vim/bundle/vim-powerline"]
-	path = dotfiles/.vim/bundle/vim-powerline
-	url = https://github.com/Lokaltog/vim-powerline.git
-[submodule "dotfiles/.vim/bundle/vim-scala"]
-	path = dotfiles/.vim/bundle/vim-scala
-	url = https://github.com/derekwyatt/vim-scala.git
-[submodule "dotfiles/.vim/bundle/Vim-Jinja2-Syntax"]
-	path = dotfiles/.vim/bundle/Vim-Jinja2-Syntax
-	url = https://github.com/Glench/Vim-Jinja2-Syntax.git
-[submodule "dotfiles/.vim/bundle/pysmell"]
-	path = dotfiles/.vim/bundle/pysmell
-	url = https://github.com/orestis/pysmell.git
-[submodule "dotfiles/.vim/bundle/python-mode"]
-	path = dotfiles/.vim/bundle/python-mode
-	url = https://github.com/klen/python-mode.git
-[submodule "dotfiles/.vim/bundle/supertab"]
-	path = dotfiles/.vim/bundle/supertab
-	url = https://github.com/ervandew/supertab.git
-[submodule "dotfiles/.vim/bundle/tagbar"]
-	path = dotfiles/.vim/bundle/tagbar
-	url = https://github.com/majutsushi/tagbar.git
-[submodule "dotfiles/.vim/bundle/vim-gitgutter"]
-	path = dotfiles/.vim/bundle/vim-gitgutter
-	url = https://github.com/airblade/vim-gitgutter.git
-[submodule "dotfiles/.bash/powerline-shell"]
-	path = dotfiles/.bash/powerline-shell
-	url = https://github.com/milkbikis/powerline-shell.git
-[submodule "dotfiles/.bash/powerline-fonts"]
-	path = dotfiles/.bash/powerline-fonts
-	url = https://github.com/Lokaltog/powerline-fonts.git
 [submodule "ansible"]
 	path = ansible
 	url = git://github.com/ansible/ansible.git
-[submodule "dotfiles/.vim/bundle/vim-markdown"]
-	path = dotfiles/.vim/bundle/vim-markdown
-	url = https://github.com/plasticboy/vim-markdown.git
+[submodule "dotfiles"]
+	path = dotfiles
+	url = git@github.com:cbeach/dotfiles.git
+[submodule "roles"]
+	path = roles
+	url = git@github.com:cbeach/ansible-roles.git
