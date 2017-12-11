@@ -44,3 +44,4 @@ rm ${HOME}/.bashrc
 ./install-apt-vim.sh
 stow -t ${HOME} dotfiles
 ./install-vim-packages.sh
+sudo chown -R mcsmash:mcsmash $HOME

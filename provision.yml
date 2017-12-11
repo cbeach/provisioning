@@ -14,7 +14,7 @@
     - include: tasks/languages.yml
   
     - name: Does the Google apt file exist?
-      command: test -f {{apt_file}}
+      command: test -f {{ apt_file }}
       register: google_apt_exists
       ignore_errors: True
   
@@ -84,15 +84,18 @@
         - {name: user.email, value: "beachc@gmail.com"}
         - {name: user.name, value: "Casey Beach"}
   
-    - name: install node.js
-      apt: name=nodejs
-  
-    - name: update npm
-      npm:
-        name: "{{ item }}"
-        global: True
+    - name: install node.js and npm
+      apt: name={{ item }}
       with_items:
+        - nodejs
         - npm
+  
+      #- name: update npm
+      #- npm:
+      #-   name: npm
+      #-   global: True
+      #-   state: latest
+      #- sudo: True
   
     - name: Install development tools and libraries.
       apt: name={{ item }}
@@ -100,7 +103,6 @@
       with_items:
         - autoconf
         - build-essential
-        - capnproto
         - cmake
         - exuberant-ctags
         - kcachegrind
@@ -117,7 +119,6 @@
         - python-opencv
         - qt5-default 
         - qttools5-dev-tools 
-        - sbt
         - screen
         - sloccount
         - valgrind
@@ -129,3 +130,14 @@
         - virtualenv
         - virtualenvwrapper
         - zlib1g-dev 
+
+    - name: Packages for LaiNES
+      package: 
+        name: '{{ item }}'
+      sudo: yes
+      with_items:
+        - clang
+        - scons
+        - libsdl2-dev
+        - libsdl2-image-dev
+        - libsdl2-ttf-dev
