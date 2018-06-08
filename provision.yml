@@ -8,8 +8,8 @@
   become: True
   vars:
     - apt_file: /etc/apt/sources.list.d/google-chrome.list
-  roles:
-    - role: apps/docker
+  #roles:
+  #  - role: apps/docker
   pre_tasks:
     - include: tasks/languages.yml
   
@@ -104,6 +104,7 @@
         - autoconf
         - build-essential
         - cmake
+        - docker.io
         - exuberant-ctags
         - kcachegrind
         - libao-dev

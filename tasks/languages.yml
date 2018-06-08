@@ -12,21 +12,21 @@
       - bc
       - bf
       - bsdgames
-      - cduce
+      #- cduce
       - clisp
-      - clojure1.6
+      - clojure
       - cmake
       - coffeescript
       - dc
       - ecere-dev
       - elixir
-      - emacs24
+      #- emacs24
       - erlang
       - f2c
       - fp-compiler
       - fsharp
       - g++
-      - gambas3-script
+      #- gambas3-script
       - gap
       - gauche
       - gawk
@@ -53,12 +53,12 @@
       - iverilog
       - jasmin-sable
       - jq
-      - julia
+      #- julia
       - libgd-dev
-      - libpng12-dev
+      - libpng-dev
       - lisaac
       - llvm
-      - lua5.3
+      - lua5.1
       - make
       - maxima
       - minizinc
@@ -75,7 +75,7 @@
       - open-cobol
       - openjdk-8-jdk
       - pari-gp
-      - parrot
+      #- parrot
       - perl
       - php-cli
       - pike8.0

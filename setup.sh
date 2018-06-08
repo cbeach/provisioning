@@ -14,12 +14,12 @@ apt-get install -y \
     python \
     python-pip \
     libffi-dev \
+    stow \
     libssl-dev 
 
 color_echo green "Installing required python packages..."
 pip install --upgrade pip
 pip install  \
-    stow \
     paramiko \
     PyYAML \
     Jinja2 \
@@ -41,7 +41,7 @@ source ./hacking/env-setup
 bin/ansible-playbook -vvvv -K -i , ../provision.yml
 cd ../
 rm ${HOME}/.bashrc
-./install-apt-vim.sh
+#./install-apt-vim.sh
 stow -t ${HOME} dotfiles
-./install-vim-packages.sh
+#./install-vim-packages.sh
 sudo chown -R mcsmash:mcsmash $HOME
