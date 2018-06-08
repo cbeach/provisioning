@@ -42,6 +42,6 @@ bin/ansible-playbook -vvvv -K -i , ../provision.yml
 cd ../
 rm ${HOME}/.bashrc
 #./install-apt-vim.sh
-stow -t ${HOME} dotfiles
+stow -t ${HOME} ./dotfiles
 #./install-vim-packages.sh
 sudo chown -R mcsmash:mcsmash $HOME
