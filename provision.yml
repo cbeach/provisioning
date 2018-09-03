@@ -37,8 +37,8 @@
       apt_key:
         url: http://packages.couchbase.com/ubuntu/couchbase.key
     - name: Install libcouchbase apt repository
-      apt_key:
-        url: "deb http://packages.couchbase.com/ubuntu bionic bionic/main"
+      apt_repository:
+        repo: "deb http://packages.couchbase.com/ubuntu bionic bionic/main"
   
     - name: Update the apt cache.
       apt: update_cache=yes
@@ -49,6 +49,8 @@
       sudo: yes
       with_items:
         - bzip2
+        - p7zip-full
+        - unrar-free
         - htop
         - iotop
         - keepass2
@@ -111,6 +113,7 @@
         - autoconf
         - build-essential
         - cmake
+        - curl
         - docker.io
         - exuberant-ctags
         - kcachegrind
