@@ -68,6 +68,7 @@
       apt: name={{ item }}
       sudo: yes
       with_items:
+        - ffmpeg
         - flashplugin-installer
         - texlive
         - texlive-latex-extra
