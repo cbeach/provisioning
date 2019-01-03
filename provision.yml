@@ -129,6 +129,7 @@
         - libsdl2-dev 
         - libtool
         - libzip-dev
+        - net-tools
         - opencv-data
         - python3
         - python3-dev
