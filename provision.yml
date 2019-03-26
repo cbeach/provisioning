@@ -49,13 +49,13 @@
       sudo: yes
       with_items:
         - bzip2
-        - p7zip-full
-        - unrar-free
+        - direnv
         - htop
         - iotop
-        - keepass2
         - openssh-server
+        - p7zip-full
         - stow
+        - unrar-free
   
     - name: Install desktop environment.
       apt: name={{ item }}
@@ -73,6 +73,7 @@
         - texlive
         - texlive-latex-extra
         - okular
+        - zoom
   
     - name: Install graphics libraries
       apt: name={{ item }}
@@ -93,19 +94,6 @@
       with_items:
         - {name: user.email, value: "beachc@gmail.com"}
         - {name: user.name, value: "Casey Beach"}
-  
-    - name: install node.js and npm
-      apt: name={{ item }}
-      with_items:
-        - nodejs
-        - npm
-  
-      #- name: update npm
-      #- npm:
-      #-   name: npm
-      #-   global: True
-      #-   state: latest
-      #- sudo: True
   
     - name: Install development tools and libraries.
       apt: name={{ item }}
@@ -158,3 +146,12 @@
         - libsdl2-dev
         - libsdl2-image-dev
         - libsdl2-ttf-dev
+
+
+    - name: Fun stuff
+      package: 
+        name: '{{ item }}'
+      sudo: yes
+      with_items:
+        - sl
+        - gnustep-gui-runtime
