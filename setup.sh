@@ -18,18 +18,20 @@ apt-get install -y \
     libssl-dev 
 
 color_echo green "Installing required python packages..."
-pip install --upgrade pip
-pip install  \
-    paramiko \
-    PyYAML \
-    Jinja2 \
-    httplib2 \
-    six \
-    nose \
-    passlib \
-    pycrypto \
-    virtualenv \
-    virtualenvwrapper
+pip3 install --upgrade pip
+pip3 install  \
+     bpytop \
+     powerline-shell \
+     paramiko \
+     PyYAML \
+     Jinja2 \
+     httplib2 \
+     six \
+     nose \
+     passlib \
+     pycrypto \
+     virtualenv \
+     virtualenvwrapper
 
 source painfull_installs.sh
 
@@ -44,4 +46,3 @@ rm ${HOME}/.bashrc
 #./install-apt-vim.sh
 stow -t ${HOME} dotfiles
 #./install-vim-packages.sh
-sudo chown -R mcsmash:mcsmash $HOME
