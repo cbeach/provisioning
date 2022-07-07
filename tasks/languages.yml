@@ -2,7 +2,6 @@
   # List of languages shamelessly stolen from the quine relay.
   - name: Install programming languages.
     apt: name={{ item }}
-    sudo: yes
     with_items:
       - afnix
       - algol68g
@@ -43,7 +42,7 @@
       - gobjc
       - golang
       - gpt
-      - gri
+      #- gri
       - groff
       - groovy
       - haxe

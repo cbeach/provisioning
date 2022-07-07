@@ -10,7 +10,7 @@
     - apt_file: /etc/apt/sources.list.d/google-chrome.list
   #roles:
   #  - role: apps/docker
-  pre_tasks:
+  tasks:
     - include: tasks/languages.yml
   
     - name: Does the Google apt file exist?
@@ -30,23 +30,21 @@
       apt: update_cache=yes
       when: google_apt_exists.rc == 1
   
-    - name: Install Google Chrome
-      apt: pkg=google-chrome-stable state=installed
+    #- name: Install Google Chrome
+    #  apt: pkg=google-chrome-stable state=installed
 
-    - name: Install libcouchbase gpg key
-      apt_key:
-        url: http://packages.couchbase.com/ubuntu/couchbase.key
-    - name: Install libcouchbase apt repository
-      apt_repository:
-        repo: "deb http://packages.couchbase.com/ubuntu bionic bionic/main"
+    #- name: Install libcouchbase gpg key
+    #  apt_key:
+    #    url: http://packages.couchbase.com/ubuntu/couchbase.key
+    #- name: Install libcouchbase apt repository
+    #  apt_repository:
+    #    repo: "deb http://packages.couchbase.com/ubuntu bionic bionic/main"
   
     - name: Update the apt cache.
       apt: update_cache=yes
-      sudo: yes
   
     - name: Install system tools.
       apt: name={{ item }}
-      sudo: yes
       with_items:
         - bzip2
         - direnv
@@ -54,19 +52,20 @@
         - iotop
         - openssh-server
         - p7zip-full
+        - pv
         - stow
         - unrar-free
+        - xclip
   
     - name: Install desktop environment.
       apt: name={{ item }}
-      sudo: yes
       with_items:
         - gnome
         - gnome-tweak-tool
+        - xmonad
   
     - name: Install misc packages.
       apt: name={{ item }}
-      sudo: yes
       with_items:
         - ffmpeg
         - flashplugin-installer
@@ -75,29 +74,27 @@
         - texlive-latex-extra
         - okular
   
-    - name: Install graphics libraries
-      apt: name={{ item }}
-      sudo: yes
-      with_items:
-        - libsdl-image1.2:i386
-        - libsdl1.2debian 
-        - libsdl-image1.2 
-        - libsdl-ttf2.0-0
-        - libsdl2-2.0-0
-        - freeglut3-dev
-        - libgtk2.0-0:i386
+    #- name: Install graphics libraries
+    #  apt: name={{ item }}
+    #  with_items:
+    #    - libsdl-image1.2:i386
+    #    - libsdl1.2debian 
+    #    - libsdl-image1.2 
+    #    - libsdl-ttf2.0-0
+    #    - libsdl2-2.0-0
+    #    - freeglut3-dev
+    #    - libgtk2.0-0:i386
   
-    - name: Configure git
-      git_config: name={{ item.name }} value={{ item.value }} scope=global
-      become: yes
-      become_user: mcsmash
-      with_items:
-        - {name: user.email, value: "beachc@gmail.com"}
-        - {name: user.name, value: "Casey Beach"}
+    #- name: Configure git
+    #  git_config: name={{ item.name }} value={{ item.value }} scope=global
+    #  become: yes
+    #  become_user: mcsmash
+    #  with_items:
+    #    - {name: user.email, value: "beachc@gmail.com"}
+    #    - {name: user.name, value: "Casey Beach"}
   
     - name: Install development tools and libraries.
       apt: name={{ item }}
-      sudo: yes
       with_items:
         - autoconf
         - build-essential
@@ -109,19 +106,20 @@
         - libao-dev
         - libarchive-dev 
         - libboost-dev
-        - libcouchbase-dev
+        - libfuse3-dev
+        #- libcouchbase-dev
         - libgtk-3-dev 
         - libopencv-dev
         - libopenmpi-dev
         - libqt5opengl5-dev
-        - libsdl2-dev 
+        #- libsdl2-dev 
         - libtool
         - libzip-dev
         - net-tools
         - opencv-data
         - python3
         - python3-dev
-        - python-opencv
+        - python3-opencv
         - qt5-default 
         - qttools5-dev-tools 
         - screen
@@ -139,7 +137,6 @@
     - name: Fun stuff
       package: 
         name: '{{ item }}'
-      sudo: yes
       with_items:
         - sl
         - gnustep-gui-runtime

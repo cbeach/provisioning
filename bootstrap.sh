@@ -61,11 +61,11 @@ color_echo() {
 
 color_echo yellow "Bootstrapping your system..."
 color_echo green "Updating apt-get..."
-apt-get update -y
+sudo apt-get update -y
 color_echo green "Upgrading system..."
-apt-get upgrade -y
+sudo apt-get upgrade -y
 color_echo green "Installing git..."
-apt-get install -y git-core
+sudo apt-get install -y git-core
 
 color_echo green "Creating development directory..."
 mkdir dev
