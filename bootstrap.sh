@@ -59,7 +59,9 @@ color_echo() {
 }
 
 
-color_echo yellow "Bootstrapping your system..."
+ORIGINAL_USER=$(logname)
+color_echo green "Starting bootstrap. "
+color_echo yellow "Username: $ORIGINAL_USER. Bootstrapping your system..."
 color_echo green "Updating apt-get..."
 sudo apt-get update -y
 color_echo green "Upgrading system..."
@@ -74,6 +76,8 @@ color_echo green "Cloning the profisioning repository..."
 git clone https://github.com/cbeach/provisioning.git
 cd provisioning
 git submodule update --init --recursive
+chown -R $1 ./
+pip3 install ansible
 
 color_echo green "Running the provisioning script..."
 . setup.sh

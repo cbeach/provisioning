@@ -34,13 +34,9 @@ sudo pip3 install  \
      virtualenv \
      virtualenvwrapper
 
-#source painfull_installs.sh
-
-color_echo green "Setting up ansible environment"
-
-ansible-playbook -vvvv -K -i , provision.yml
-cd ../
-rm -f ${HOME}/.bashrc
-#./install-apt-vim.sh
+color_echo green "Starting ansible run"
+ansible-playbook -vvvv -K -i , ./provision.yml
+rm ${HOME}/.bashrc
 stow -t ${HOME} dotfiles
-#./install-vim-packages.sh
+./install-apt-vim.sh
+./install-vim-packages.sh
