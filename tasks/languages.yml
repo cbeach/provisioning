@@ -1,8 +1,7 @@
 ---
   # List of languages shamelessly stolen from the quine relay.
   - name: Install programming languages.
-    apt: name={{ item }}
-    sudo: yes
+    ansible.builtin.apt: name={{ item }}
     with_items:
       - afnix
       - algol68g

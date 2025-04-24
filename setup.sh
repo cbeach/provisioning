@@ -18,8 +18,8 @@ apt-get install -y \
     libssl-dev 
 
 color_echo green "Installing required python packages..."
-pip3 install --upgrade pip
-pip3 install  \
+pip3 install --break-system-packages --upgrade pip
+pip3 install --break-system-packages \
      bpytop \
      powerline-shell \
      paramiko \
@@ -33,16 +33,15 @@ pip3 install  \
      virtualenv \
      virtualenvwrapper
 
-source painfull_installs.sh
+#source painfull_installs.sh
 
 color_echo green "Starting ansible run"
-cd ./ansible
-color_echo green "Setting up ansible environment"
-source ./hacking/env-setup
+#cd ./ansible
+#color_echo green "Setting up ansible environment"
+#source ./hacking/env-setup
 
-bin/ansible-playbook -vvvv -K -i , ../provision.yml
-cd ../
-rm ${HOME}/.bashrc
+ansible-playbook -vvvv -K -i , provision.yml
+#rm ${HOME}/.bashrc
 #./install-apt-vim.sh
 stow -t ${HOME} dotfiles
 #./install-vim-packages.sh

@@ -11,7 +11,7 @@
   #roles:
   #  - role: apps/docker
   pre_tasks:
-    - include: tasks/languages.yml
+    - include_tasks: tasks/languages.yml
   
     - name: Does the Google apt file exist?
       command: test -f {{ apt_file }}
@@ -27,11 +27,11 @@
       when: google_apt_exists.rc == 1
   
     - name: Update apt cache
-      apt: update_cache=yes
+      ansible.builtin.apt: update_cache=yes
       when: google_apt_exists.rc == 1
   
     - name: Install Google Chrome
-      apt: pkg=google-chrome-stable state=installed
+      ansible.builtin.apt: pkg=google-chrome-stable state=installed
 
     - name: Install libcouchbase gpg key
       apt_key:
@@ -40,13 +40,11 @@
       apt_repository:
         repo: "deb http://packages.couchbase.com/ubuntu bionic bionic/main"
   
-    - name: Update the apt cache.
-      apt: update_cache=yes
-      sudo: yes
+    #- name: Update the apt cache.
+    #  ansible.builtin.apt: update_cache=yes
   
     - name: Install system tools.
-      apt: name={{ item }}
-      sudo: yes
+      ansible.builtin.apt: name={{ item }}
       with_items:
         - bzip2
         - direnv
@@ -58,15 +56,13 @@
         - unrar-free
   
     - name: Install desktop environment.
-      apt: name={{ item }}
-      sudo: yes
+      ansible.builtin.apt: name={{ item }}
       with_items:
         - gnome
         - gnome-tweak-tool
   
     - name: Install misc packages.
-      apt: name={{ item }}
-      sudo: yes
+      ansible.builtin.apt: name={{ item }}
       with_items:
         - ffmpeg
         - flashplugin-installer
@@ -76,8 +72,7 @@
         - okular
   
     - name: Install graphics libraries
-      apt: name={{ item }}
-      sudo: yes
+      ansible.builtin.apt: name={{ item }}
       with_items:
         - libsdl-image1.2:i386
         - libsdl1.2debian 
@@ -96,8 +91,7 @@
         - {name: user.name, value: "Casey Beach"}
   
     - name: Install development tools and libraries.
-      apt: name={{ item }}
-      sudo: yes
+      ansible.builtin.apt: name={{ item }}
       with_items:
         - autoconf
         - build-essential
@@ -139,7 +133,6 @@
     - name: Fun stuff
       package: 
         name: '{{ item }}'
-      sudo: yes
       with_items:
         - sl
         - gnustep-gui-runtime
