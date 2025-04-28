@@ -70,7 +70,7 @@ apt-get install -y git-core
 color_echo green "Creating development directory..."
 mkdir dev
 cd dev
-color_echo green "Cloning the profisioning repository..."
+color_echo green "Cloning the provisioning repository..."
 git clone -b ubuntu-24.04 https://github.com/cbeach/provisioning.git
 cd provisioning
 git submodule update --init --recursive
