@@ -1,6 +1,3 @@
-[submodule "ansible"]
-	path = ansible
-	url = git://github.com/ansible/ansible.git
 [submodule "dotfiles"]
 	path = dotfiles
 	url = https://github.com/cbeach/dotfiles.git

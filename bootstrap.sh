@@ -71,7 +71,7 @@ color_echo green "Creating development directory..."
 mkdir dev
 cd dev
 color_echo green "Cloning the profisioning repository..."
-git clone https://github.com/cbeach/provisioning.git
+git clone -b ubuntu-24.04 https://github.com/cbeach/provisioning.git
 cd provisioning
 git submodule update --init --recursive
 
