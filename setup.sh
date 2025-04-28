@@ -11,8 +11,8 @@ color_echo green "Installing required system packages..."
 apt-get install -y \
     build-essential \
     git \
-    python \
-    python-pip \
+    python3 \
+    python3-pip \
     libffi-dev \
     stow \
     libssl-dev 

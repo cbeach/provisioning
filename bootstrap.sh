@@ -65,7 +65,7 @@ apt-get update -y
 color_echo green "Upgrading system..."
 apt-get upgrade -y
 color_echo green "Installing git..."
-apt-get install -y git-core
+apt-get install -y git-core 
 
 color_echo green "Creating development directory..."
 mkdir dev
