@@ -3,6 +3,7 @@
 source lib.sh
 
 color_echo yellow "current working directory: $(pwd)"
+rm ~/.bashrc
 
 color_echo yellow "Bootstrapping your system..."
 apt-get -y update

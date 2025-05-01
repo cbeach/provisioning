@@ -74,7 +74,6 @@ color_echo green "Cloning the provisioning repository..."
 git clone -b ubuntu-24.04 https://github.com/cbeach/provisioning.git
 cd provisioning
 pip3 install ansible
-which ansible-playbook
 git submodule update --init --recursive
 
 color_echo green "Running the provisioning script..."
